@@ -1,3 +1,4 @@
+
 feature 'Viewing links' do
 
   scenario 'I can see existing links on the links page' do
@@ -14,4 +15,9 @@ feature 'Viewing links' do
       expect(page).to have_content('Makers Academy')
     end
   end
+
+  # scenario "it works" do
+  #   visit '/'
+  #   expect(page).to have_content('Makers')
+  # end
 end
