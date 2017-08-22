@@ -4,7 +4,7 @@ require './app/models/link'
 
 class BookmarkManager < Sinatra::Base
 
-set :root, File.dirname(__FILE__)
+# set :root, File.dirname(__FILE__)
 
   get '/' do
 
