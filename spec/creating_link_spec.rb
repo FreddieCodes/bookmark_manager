@@ -8,7 +8,7 @@ feature 'Links form' do
 
   scenario 'I can see the Add button' do
   	visit '/links'
-  	
+
   end
 
   scenario 'I can see my bookmarks' do
@@ -17,7 +17,9 @@ feature 'Links form' do
   	fill_in("title", with: "Google")
   	click_button("Add")
   	expect(current_path).to eq '/links'
-  	expect(page).to have_content("Title: Google")
+    within 'ul#links' do
+  	  expect(page).to have_content("Title: Google")
+    end
   end
 
 end
