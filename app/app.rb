@@ -1,7 +1,9 @@
 ENV['RACK_ENV'] ||= "development"
-
+require_relative 'data_mapper_setup'
 require 'sinatra/base'
+
 require './app/models/link'
+require './app/models/tag'
 
 
 class BookmarkManager < Sinatra::Base
@@ -19,7 +21,10 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/links' do
-  	Link.create(url: params[:url], title: params[:title])
+  	link = Link.create(url: params[:url], title: params[:title])
+    tag = Tag.first_or_create(name: params[:tag])
+    p link.tags << tag
+    link.save
   	redirect '/links'
   end
 
