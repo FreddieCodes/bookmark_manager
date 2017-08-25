@@ -57,4 +57,4 @@ end
   # scenario "it works" do
   #   visit '/'
   #   expect(page).to have_content('Makers')
-  # end
+  # endf
