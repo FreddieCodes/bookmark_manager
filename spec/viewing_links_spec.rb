@@ -14,6 +14,21 @@ feature 'Viewing links' do
     within 'ul#links' do
       expect(page).to have_content('Makers Academy')
     end
+
+
+  end
+
+  scenario "I can filter link by tag" do
+    visit '/tags/bubbles'
+
+    Link.create(url: 'http://www.makersacademy.com', title: 'Makers Academy', tags: [Tag.first_or_create(name: 'education')])
+    Link.create(url: 'http://www.instagram.com', title: 'Instagram', tags: [Tag.first_or_create(name: 'social media')])
+    Link.create(url: 'http://www.bubble.com', title: 'Bubble', tags: [Tag.first_or_create(name: 'bubble')])
+
+    expect(page.status_code).to eq (200)
+    expect(page).not_to have_content('Makers Academy')
+    expect(page).to have_content('http://www.bubble.com')
+    expect(page).to have_content('Bubble')
   end
 
   # scenario "it works" do
