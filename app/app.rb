@@ -36,7 +36,7 @@ class BookmarkManager < Sinatra::Base
   #         else
   #           []
           # end
-  erb :'links/index'
+  erb(:'links/index')
 end
 
 end
